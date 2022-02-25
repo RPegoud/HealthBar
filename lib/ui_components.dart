@@ -1,3 +1,6 @@
+import 'package:auth/pie_chart.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './constants.dart';
@@ -220,14 +223,13 @@ Widget buildExerciceCard(List exercices, fontSize) {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Text(
-            exercices[0],
-            style:
-                GoogleFonts.pacifico(color: Colors.black, fontSize: fontSize),
-          ),
-          Text(
-            'Reps : ${exercices[1]}\nRest : ${exercices[2]}',
-          ),
-        
+          exercices[0],
+          style: GoogleFonts.pacifico(color: Colors.black, fontSize: fontSize),
+        ),
+        Text(
+          'Reps : ${exercices[1]}\nRest : ${exercices[2]}',
+        ),
+
         // ListTile(
         //   leading: Text(
         //     exercices[0],
@@ -248,4 +250,169 @@ Widget buildExerciceCard(List exercices, fontSize) {
       ],
     ),
   );
+}
+
+class CategoryRow extends StatelessWidget {
+  const CategoryRow({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
+      child: Column(
+        children: <Widget>[
+          insertSpace(80),
+          Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromRGBO(82, 98, 255, 1),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Text(
+                'Proteins',
+                style: GoogleFonts.pacifico(color: Colors.grey.shade800, fontSize: 16),
+                
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromRGBO(255, 171, 67, 1),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Text(
+                'Carbs',
+                style: GoogleFonts.pacifico(color: Colors.grey.shade800, fontSize: 16),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromRGBO(252, 91, 57, 1),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Text(
+                'Fats',
+                style: GoogleFonts.pacifico(color: Colors.grey.shade800, fontSize: 16),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class PieChartView extends StatefulWidget {
+  const PieChartView({Key? key}) : super(key: key);
+
+  @override
+  State<PieChartView> createState() => _PieChartViewState();
+}
+
+class _PieChartViewState extends State<PieChartView> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 4,
+      child: LayoutBuilder(
+        builder: (context, constraints) => Container(
+          decoration: const BoxDecoration(
+            color: Color.fromRGBO(193, 214, 233, 1),
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                  spreadRadius: -10,
+                  blurRadius: 17,
+                  offset: Offset(-5, -5),
+                  color: Colors.white),
+              BoxShadow(
+                spreadRadius: -2,
+                blurRadius: 10,
+                offset: Offset(7, 7),
+                color: Color.fromRGBO(146, 182, 216, 1),
+              ),
+            ],
+          ),
+          child: Stack(
+            children: [
+              Center(
+                child: SizedBox(
+                  width: constraints.maxWidth * 0.6,
+                  child: CustomPaint(
+                    child: Center(),
+                    foregroundPainter: PieChart(
+                        width: constraints.maxWidth * 0.5,
+                        categories: kCategories),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  height: constraints.maxWidth * 0.4,
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(193, 214, 233, 1),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      const BoxShadow(
+                          blurRadius: 1,
+                          offset: Offset(-1, -1),
+                          color: Colors.white),
+                      BoxShadow(
+                        spreadRadius: -2,
+                        blurRadius: 10,
+                        offset: const Offset(5, 5),
+                        color: Colors.black.withOpacity(0.5),
+                      )
+                    ],
+                  ),
+                  child: FutureBuilder(
+                    future: FirebaseFirestore.instance
+                        .collection('Users')
+                        .doc(FirebaseAuth.instance.currentUser!.uid)
+                        .get(),
+                    builder: (ctx, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        Map<String, dynamic> data =
+                            snapshot.data!.data() as Map<String, dynamic>;
+                        return Center(
+                          child: Text(
+                            '${data['DailyCal']} cal',
+                            style: GoogleFonts.pacifico(
+                                color: Colors.black, fontSize: 16),
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

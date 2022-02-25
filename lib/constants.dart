@@ -44,3 +44,5 @@ const List<List<Color>> colorList = [
     Color(0xff4F3B90),
   ]
 ];
+
+const lightGreen = Color(0xff45DA9E);
