@@ -1,7 +1,7 @@
 import 'package:auth/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../ui_components.dart';
+import '../ui_components/ui_components.dart';
 
 class AuthScreen extends StatefulWidget {
   AuthScreen(this.submitForm);

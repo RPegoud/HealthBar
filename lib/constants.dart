@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 
-// const lightColor1 = Color(0xffca9f85);
-// const lightColor2 = Color(0xffB9917C);
-// const middleColor1 = Color(0xffA48072);
-// const middleColor2 = Color(0xff94746A);
-// const darkColor1 = Color(0xff826561);
-// const darkColor2 = Color(0xff6C5355);
-// const darkColor3 = Color(0xff5C474E);
-
 const lightBlue = Color(0xff01C3FF);
 const middleBlue = Color(0xff0086FF);
 const darkBlue = Color(0xff1279D4);
@@ -46,3 +38,14 @@ const List<List<Color>> colorList = [
 ];
 
 const lightGreen = Color(0xff45DA9E);
+const neumorphicBlue =  Color.fromRGBO(193, 214, 233, 1);
+
+
+  final List radioTitles = [
+    'Sedentary (limited exercice)',
+    'Lightly active (light exercise less than 3 times a week)',
+    'Moderately active (moderate exercise most days of the week)',
+    'Very active (hard exercise every day)',
+    'Extra active (strenuous exercise two or more times per day)'
+  ];
+  final List activityFactors = [1.2, 1.375, 1.55, 1.725, 1.9];
