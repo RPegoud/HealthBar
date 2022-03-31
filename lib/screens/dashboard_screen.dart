@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:auth/constants.dart';
 import 'package:auth/ui_components/ui_components.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../ui_components/dashboard/dashboard_components.dart';
 
@@ -202,9 +203,47 @@ class _DashScreenState extends State<DashScreen> {
                   ),
                 ),
                 buildContainer(
-                  350.0,
+                  400.0,
                   [
-                    const Text('Calendar'),
+                    Row(
+                      children: [
+                        Text(
+                              'Calendar',
+                              style: GoogleFonts.oswald(
+                                color: Colors.black,
+                                fontSize: 25,
+                              ),
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  // elevation: 4,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12))),
+                              child: Ink(
+                                decoration: BoxDecoration(
+                                  color: neumorphicBlue,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Container(
+                                  width: 126,
+                                  height: 36,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Add event',
+                                    style: GoogleFonts.oswald(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                      ],
+                    ),
+                    SfCalendar(
+                      view: CalendarView.week,
+                    )
                   ],
                 )
               ],

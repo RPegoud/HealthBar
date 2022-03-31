@@ -41,12 +41,15 @@ FutureBuilder<DocumentSnapshot<Map<String, dynamic>>> macroRow() {
               style: GoogleFonts.oswald(color: Colors.black, fontSize: 16),
               textAlign: TextAlign.center,
             )
+            // TODO: add split controller
           ],
         );
       }
     },
   );
 }
+
+
 
 class PieChartView extends StatefulWidget {
   const PieChartView({Key? key}) : super(key: key);
