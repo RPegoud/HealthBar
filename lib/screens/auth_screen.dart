@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../ui_components/ui_components.dart';
 
 class AuthScreen extends StatefulWidget {
-  AuthScreen(this.submitForm);
+  const AuthScreen(this.submitForm);
   final void Function(
     String email,
     String password,

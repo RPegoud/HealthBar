@@ -28,6 +28,8 @@ class _MyAppState extends State<MyApp> {
 
   late StreamSubscription<User?> _sub;
 
+  int dailyCal = 0;
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,7 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+    // initialize();
   }
 
   @override
@@ -59,7 +62,6 @@ class _MyAppState extends State<MyApp> {
       if (isLogin) {
         authResult = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
-            
       } else {
         authResult = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
@@ -67,12 +69,14 @@ class _MyAppState extends State<MyApp> {
         FirebaseFirestore.instance
             .collection('Users')
             .doc(FirebaseAuth.instance.currentUser!.uid)
-            .set({'Email': email, 'uid': FirebaseAuth.instance.currentUser!.uid, 'DailyCal': 0});
+            .set({
+          'Email': email,
+          'uid': FirebaseAuth.instance.currentUser!.uid,
+          'DailyCal': 0
+        });
 
-        CollectionReference users =
-            FirebaseFirestore.instance.collection('Users');
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       var message = 'An error occured, please check your credentials!';
       ScaffoldMessenger.of(ctx).showSnackBar(
         SnackBar(
@@ -103,7 +107,7 @@ class _MyAppState extends State<MyApp> {
           case 'home':
             return MaterialPageRoute(
               settings: settings,
-              builder: (_) => SelectedScreen(),
+              builder: (_) => const SelectedScreen(),
             );
           case 'login':
             return MaterialPageRoute(
@@ -111,6 +115,7 @@ class _MyAppState extends State<MyApp> {
               builder: (_) => AuthScreen(_submitAuth),
             );
         }
+        return null;
       },
     );
   }
