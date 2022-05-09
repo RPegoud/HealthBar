@@ -322,32 +322,4 @@ class _CategoryRowState extends State<CategoryRow> {
   }
 }
 
-Container buildContainer(height, childList) {
-  return Container(
-    height: height,
-    width: double.maxFinite,
-    margin: const EdgeInsets.all(10),
-    padding: const EdgeInsets.all(20),
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(41.0),
-      boxShadow: [
-        const BoxShadow(
-            blurRadius: 0.5, offset: Offset(-1, -1), color: Colors.white),
-        BoxShadow(
-          spreadRadius: -2,
-          blurRadius: 10,
-          offset: const Offset(5, 5),
-          color: Colors.black.withOpacity(0.5),
-        )
-      ],
-      color: const Color.fromARGB(255, 186, 208, 228),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Column(
-        children: childList,
-      ),
-    ),
-  );
-}
+

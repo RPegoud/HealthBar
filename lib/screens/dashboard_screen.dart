@@ -8,12 +8,14 @@ import 'package:auth/ui_components/ui_components.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../ui_components/dashboard/Macro/dashboard_components.dart';
+
 class DashScreen extends StatefulWidget {
   const DashScreen({Key? key}) : super(key: key);
 
   @override
   _DashScreenState createState() => _DashScreenState();
 }
+
 class _DashScreenState extends State<DashScreen> {
   int selectedRadio = -1;
   int _radioValue = 0;
@@ -91,176 +93,176 @@ class _DashScreenState extends State<DashScreen> {
     );
   }
 
+  // ---------------------------------------------------------------
+
   Container infoContainer() {
     return buildContainer(
-                300.0,
-                [
-                  Row(
-                    children: [
-                      Text(
-                        'My infos',
-                        style: GoogleFonts.oswald(
-                          color: Colors.black,
-                          fontSize: 25,
-                        ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            // elevation: 4,
-                            padding: EdgeInsets.zero,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12))),
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            color: neumorphicBlue,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            width: 126,
-                            height: 36,
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Update',
-                              style: GoogleFonts.oswald(
-                                  color: Colors.black, fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+      300.0,
+      [
+        Row(
+          children: [
+            Text(
+              'My infos',
+              style: GoogleFonts.oswald(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
+            const Spacer(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  // elevation: 4,
+                  padding: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+              child: Ink(
+                decoration: BoxDecoration(
+                  color: neumorphicBlue,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Container(
+                  width: 126,
+                  height: 36,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Update',
+                    style:
+                        GoogleFonts.oswald(color: Colors.black, fontSize: 15),
                   ),
-                ],
-              );
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 
   Container calendarContainer() {
     return buildContainer(
-                400.0,
-                [
-                  Row(
-                    children: [
-                      Text(
-                        'Calendar',
-                        style: GoogleFonts.oswald(
-                          color: Colors.black,
-                          fontSize: 25,
-                        ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            // elevation: 4,
-                            padding: EdgeInsets.zero,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12))),
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            color: neumorphicBlue,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            width: 126,
-                            height: 36,
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Add event',
-                              style: GoogleFonts.oswald(
-                                  color: Colors.black, fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+      400.0,
+      [
+        Row(
+          children: [
+            Text(
+              'Calendar',
+              style: GoogleFonts.oswald(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
+            const Spacer(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  // elevation: 4,
+                  padding: EdgeInsets.zero,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+              child: Ink(
+                decoration: BoxDecoration(
+                  color: neumorphicBlue,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Container(
+                  width: 126,
+                  height: 36,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Add event',
+                    style:
+                        GoogleFonts.oswald(color: Colors.black, fontSize: 15),
                   ),
-                  SfCalendar(
-                    view: CalendarView.week,
-                  )
-                ],
-              );
+                ),
+              ),
+            ),
+          ],
+        ),
+        SfCalendar(
+          view: CalendarView.week,
+        )
+      ],
+    );
   }
 
   Container macroContainer(BuildContext context) {
     return Container(
-                height: 370,
-                width: double.maxFinite,
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(20),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(41.0),
-                  boxShadow: [
-                    const BoxShadow(
-                        blurRadius: 0.5,
-                        offset: Offset(-1, -1),
-                        color: Colors.white),
-                    BoxShadow(
-                      spreadRadius: -2,
-                      blurRadius: 10,
-                      offset: const Offset(5, 5),
-                      color: Colors.black.withOpacity(0.5),
-                    )
-                  ],
-                  color: const Color.fromARGB(255, 186, 208, 228),
+      height: 370,
+      width: double.maxFinite,
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(20),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(41.0),
+        boxShadow: [
+          const BoxShadow(
+              blurRadius: 0.5, offset: Offset(-1, -1), color: Colors.white),
+          BoxShadow(
+            spreadRadius: -2,
+            blurRadius: 10,
+            offset: const Offset(5, 5),
+            color: Colors.black.withOpacity(0.5),
+          )
+        ],
+        color: const Color.fromARGB(255, 186, 208, 228),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5),
+            child: Row(
+              children: [
+                Text(
+                  'Macros',
+                  style: GoogleFonts.oswald(
+                    color: Colors.black,
+                    fontSize: 25,
+                  ),
                 ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Macros',
-                            style: GoogleFonts.oswald(
-                              color: Colors.black,
-                              fontSize: 25,
-                            ),
-                          ),
-                          const Spacer(),
-                          ElevatedButton(
-                            onPressed: () {
-                              macroCalculatorForm(context);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                // elevation: 4,
-                                padding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12))),
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                color: neumorphicBlue,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Container(
-                                width: 126,
-                                height: 36,
-                                alignment: Alignment.center,
-                                child: Text(
-                                  'Update',
-                                  style: GoogleFonts.oswald(
-                                      color: Colors.black, fontSize: 15),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                const Spacer(),
+                ElevatedButton(
+                  onPressed: () {
+                    macroCalculatorForm(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      // elevation: 4,
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12))),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      color: neumorphicBlue,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Container(
+                      width: 126,
+                      height: 36,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Update',
+                        style: GoogleFonts.oswald(
+                            color: Colors.black, fontSize: 15),
                       ),
                     ),
-                    macroRow(),
-                    insertSpace(10),
-                    Expanded(
-                      child: Row(
-                        children: const [
-                          CategoryRow(),
-                          PieChartView(),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              );
+              ],
+            ),
+          ),
+          macroRow(),
+          insertSpace(10),
+          Expanded(
+            child: Row(
+              children: const [
+                CategoryRow(),
+                PieChartView(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   // ------------------ Macro Popping Menu ------------------

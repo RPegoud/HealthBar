@@ -1,9 +1,8 @@
-import 'package:auth/ui_components/dashboard/Macro/dashboard_components.dart';
 import 'package:flutter/material.dart';
 import 'package:auth/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../ui_components/dashboard/Macro/dashboard_components.dart';
+import '../ui_components/meals/meals_components.dart';
 
 class MealScreen extends StatefulWidget {
   const MealScreen({Key? key}) : super(key: key);
@@ -16,38 +15,43 @@ class _MealScreenState extends State<MealScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: neumorphicBlue,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 4, 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Meals',
-                    style: GoogleFonts.pacifico(
-                      color: Colors.black,
-                      fontSize: 50,
-                    ),
-                    textAlign: TextAlign.center,
+      backgroundColor: neumorphicBlue,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 4, 5),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // TODO : push changes
+                Text(
+                  'Meals',
+                  style: GoogleFonts.pacifico(
+                    color: Colors.black,
+                    fontSize: 50,
                   ),
-                  buildContainer(
-                    400.0,
-                    [
-                      const Text(''),
-                    ],
-                  )
-                ],
-              ),
+                  textAlign: TextAlign.center,
+                ),
+                alimentTile(
+                  aliment: Aliment(
+                      name: 'Banana',
+                      type: 'Vegetable',
+                      unit: true,
+                      proteins: 40,
+                      carbs: 20,
+                      fats: 5),
+                ),
+              ],
             ),
           ),
-        )
-        //
-        );
+        ),
+      ),
+    );
   }
 }
+
+
 
 // body: Stack(
 //   children: <Widget>[

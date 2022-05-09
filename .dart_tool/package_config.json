@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "emojis",
+      "rootUri": "file:///C:/Users/ryanp/OneDrive/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/emojis-0.9.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///C:/Users/ryanp/OneDrive/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
       "packageUri": "lib/",
@@ -428,7 +434,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-04-04T07:48:00.855164Z",
+  "generated": "2022-05-06T16:55:50.179874Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }

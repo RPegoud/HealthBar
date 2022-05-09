@@ -1,6 +1,7 @@
 import 'package:auth/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../ui_components/auth_components.dart';
 import '../ui_components/ui_components.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
+  // ignore: prefer_final_fields
   var _userEmail = '';
   var _userPassword = '';
   var _isLogin = true;
@@ -50,159 +52,225 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          buildTopEllipse('assets/images/Orange.png'),
-          SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 70,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  buildTitle('Welcome !', TextAlign.left),
-                  insertSpace(20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: neumorphicBlue,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Welcome !',
+                  style:
+                      GoogleFonts.pacifico(color: Colors.black, fontSize: 50),
+                ),
+                Form(
+                  key: _formKey,
+                  child: Column(
                     children: <Widget>[
-                      const SizedBox(height: 70),
-                      Form(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            buildText('E-mail :',TextAlign.start),
-                            insertSpace(10),
-                            Stack(
-                              children: <Widget>[
-                                buildGradientContainer(Alignment.centerLeft, [lightBlue, darkBlue]),
-                                Container(
-                                  margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                  alignment: Alignment.centerLeft,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1),
-                                    color: Colors.white,
-                                  ),
-                                  height: 60,
-                                  child: TextFormField(
-                                    keyboardType: TextInputType.emailAddress,
-                                    validator: (value) {
-                                      if (value == null ||
-                                          !value.contains('@') ||
-                                          !value.contains('.com')) {
-                                        return ('Please enter a valid email adress.');
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onSaved: (value) {
-                                      _userEmail = value!;
-                                    },
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                    ),
-                                    decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                        contentPadding:
-                                            EdgeInsets.fromLTRB(10, 13, 0, 0),
-                                        prefixIcon: Icon(
-                                          Icons.lock,
-                                          color: Colors.black,
-                                        ),
-                                        hintText: 'Enter your e-mail',
-                                        hintStyle:
-                                            TextStyle(color: Colors.black)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            buildText('Password :', TextAlign.start),
-                            insertSpace(10),
-                            Stack(
-                              children: <Widget>[
-                                buildGradientContainer(Alignment.centerLeft, [lightBlue, darkBlue]),
-                                Container(
-                                  margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                                  alignment: Alignment.centerLeft,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1),
-                                    color: Colors.white,
-                                  ),
-                                  height: 60,
-                                  child: TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.length < 6) {
-                                        return ('Password must be at least 6 characters long.');
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onSaved: (value) {
-                                      _userPassword = value!;
-                                    },
-                                    obscureText: true,
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                    ),
-                                    decoration: const InputDecoration(
-                                        border: InputBorder.none,
-                                        contentPadding:
-                                            EdgeInsets.fromLTRB(10, 13, 0, 0),
-                                        prefixIcon: Icon(
-                                          Icons.lock,
-                                          color: Colors.black,
-                                        ),
-                                        hintText: 'Enter your password',
-                                        hintStyle:
-                                            TextStyle(color: Colors.black)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            buildForgotPassword(),
-                            insertSpace(30),
-                            buildAuthButton(_trySubmit, _isLogin),
-                            insertSpace(40),
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  _isLogin = !_isLogin;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
-                                  shadowColor: Colors.white),
-                              child: Text(
-                                _isLogin
-                                    ? 'New here ? Create an account !'
-                                    : "I'm a regular here, log me in",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.pacifico(
-                                    color: Colors.black, fontSize: 20),
-                              ),
-                            ),
-                          ],
-                        ),
+                      buildText('E-mail :', TextAlign.start),
+                      insertSpace(10),
+                      EmailForm(
+                        onSaved: (value) {
+                          _userEmail = value!;
+                        },
                       ),
+                      insertSpace(20),
+                      buildText('Password :', TextAlign.start),
+                      insertSpace(10),
+                      PasswordForm(
+                        onSaved: (value) {
+                          _userPassword = value!;
+                        },
+                      ),
+                      buildForgotPassword(),
+                      insertSpace(30),
+                      buildAuthButton(_trySubmit, _isLogin),
+                      insertSpace(40),
+                      createAccBtn(
+                        isLogin: _isLogin,
+                        onPressed: () {
+                          setState(() {
+                            _isLogin = !_isLogin;
+                          });
+                        },
+                      ),
+                      insertSpace(20)
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+// Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: <Widget>[
+//           buildTopEllipse('assets/images/Orange.png'),
+//           SizedBox(
+//             height: double.infinity,
+//             width: double.infinity,
+//             child: SingleChildScrollView(
+//               physics: const NeverScrollableScrollPhysics(),
+//               padding: const EdgeInsets.symmetric(
+//                 horizontal: 20,
+//                 vertical: 70,
+//               ),
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 crossAxisAlignment: CrossAxisAlignment.stretch,
+//                 children: <Widget>[
+//                   buildTitle('Welcome !', TextAlign.left),
+//                   insertSpace(20),
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: <Widget>[
+//                       const SizedBox(height: 70),
+//                       Form(
+//                         key: _formKey,
+//                         child: Column(
+//                           children: <Widget>[
+//                             buildText('E-mail :',TextAlign.start),
+//                             insertSpace(10),
+//                             Stack(
+//                               children: <Widget>[
+//                                 buildGradientContainer(Alignment.centerLeft, [lightBlue, darkBlue]),
+//                                 Container(
+//                                   margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+//                                   alignment: Alignment.centerLeft,
+//                                   decoration: BoxDecoration(
+//                                     borderRadius: BorderRadius.circular(10.0),
+//                                     border: Border.all(
+//                                         color: Colors.black, width: 1),
+//                                     color: Colors.white,
+//                                   ),
+//                                   height: 60,
+//                                   child: TextFormField(
+//                                     keyboardType: TextInputType.emailAddress,
+//                                     validator: (value) {
+//                                       if (value == null ||
+//                                           !value.contains('@') ||
+//                                           !value.contains('.com')) {
+//                                         return ('Please enter a valid email adress.');
+//                                       } else {
+//                                         return null;
+//                                       }
+//                                     },
+//                                     onSaved: (value) {
+//                                       _userEmail = value!;
+//                                     },
+//                                     style: const TextStyle(
+//                                       color: Colors.black,
+//                                       fontSize: 20,
+//                                     ),
+//                                     decoration: const InputDecoration(
+//                                         border: InputBorder.none,
+//                                         contentPadding:
+//                                             EdgeInsets.fromLTRB(10, 13, 0, 0),
+//                                         prefixIcon: Icon(
+//                                           Icons.lock,
+//                                           color: Colors.black,
+//                                         ),
+//                                         hintText: 'Enter your e-mail',
+//                                         hintStyle:
+//                                             TextStyle(color: Colors.black)),
+//                                   ),
+//                                 ),
+//                               ],
+//                             ),
+//                             buildText('Password :', TextAlign.start),
+//                             insertSpace(10),
+//                             Stack(
+//                               children: <Widget>[
+//                                 buildGradientContainer(Alignment.centerLeft, [lightBlue, darkBlue]),
+//                                 Container(
+//                                   margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+//                                   alignment: Alignment.centerLeft,
+//                                   decoration: BoxDecoration(
+//                                     borderRadius: BorderRadius.circular(10.0),
+//                                     border: Border.all(
+//                                         color: Colors.black, width: 1),
+//                                     color: Colors.white,
+//                                   ),
+//                                   height: 60,
+//                                   child: TextFormField(
+//                                     validator: (value) {
+//                                       if (value == null || value.length < 6) {
+//                                         return ('Password must be at least 6 characters long.');
+//                                       } else {
+//                                         return null;
+//                                       }
+//                                     },
+//                                     onSaved: (value) {
+//                                       _userPassword = value!;
+//                                     },
+//                                     obscureText: true,
+//                                     style: const TextStyle(
+//                                       color: Colors.black,
+//                                       fontSize: 20,
+//                                     ),
+//                                     decoration: const InputDecoration(
+//                                         border: InputBorder.none,
+//                                         contentPadding:
+//                                             EdgeInsets.fromLTRB(10, 13, 0, 0),
+//                                         prefixIcon: Icon(
+//                                           Icons.lock,
+//                                           color: Colors.black,
+//                                         ),
+//                                         hintText: 'Enter your password',
+//                                         hintStyle:
+//                                             TextStyle(color: Colors.black)),
+//                                   ),
+//                                 ),
+//                               ],
+//                             ),
+//                             buildForgotPassword(),
+//                             insertSpace(30),
+//                             buildAuthButton(_trySubmit, _isLogin),
+//                             insertSpace(40),
+//                             ElevatedButton(
+//                               onPressed: () {
+//                                 setState(() {
+//                                   _isLogin = !_isLogin;
+//                                 });
+//                               },
+//                               style: ElevatedButton.styleFrom(
+//                                   primary: Colors.white,
+//                                   shadowColor: Colors.white),
+//                               child: Text(
+//                                 _isLogin
+//                                     ? 'New here ? Create an account !'
+//                                     : "I'm a regular here, log me in",
+//                                 textAlign: TextAlign.center,
+//                                 style: GoogleFonts.pacifico(
+//                                     color: Colors.black, fontSize: 20),
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }

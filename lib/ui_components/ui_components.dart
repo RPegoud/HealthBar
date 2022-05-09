@@ -12,7 +12,7 @@ Widget buildText(String text, TextAlign align) {
     children: [
       Text(
         text,
-        style: GoogleFonts.pacifico(color: Colors.black, fontSize: 20),
+        style: GoogleFonts.oswald(color: Colors.black, fontSize: 20),
         textAlign: align,
       ),
     ],
@@ -42,7 +42,54 @@ Widget buildForgotPassword() {
     child: FlatButton(
       onPressed: () => print('Forgot password pressed'),
       child: Text('Forgot your password ?',
-          style: GoogleFonts.pacifico(color: Colors.black, fontSize: 15)),
+          style: GoogleFonts.oswald(color: Colors.black, fontSize: 15)),
+    ),
+  );
+}
+
+BoxDecoration kBoxDecoration(radius) {
+    return BoxDecoration(
+      borderRadius: radius,
+      boxShadow: [
+        const BoxShadow(
+            blurRadius: 0.5, offset: Offset(-1, -1), color: Colors.white),
+        BoxShadow(
+          spreadRadius: -2,
+          blurRadius: 10,
+          offset: const Offset(5, 5),
+          color: Colors.black.withOpacity(0.5),
+        )
+      ],
+      color: const Color.fromARGB(255, 186, 208, 228),
+    );
+  }
+
+Container buildContainer(height, childList) {
+  return Container(
+    height: height,
+    width: double.maxFinite,
+    margin: const EdgeInsets.all(10),
+    padding: const EdgeInsets.all(20),
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(41.0),
+      boxShadow: [
+        const BoxShadow(
+            blurRadius: 0.5, offset: Offset(-1, -1), color: Colors.white),
+        BoxShadow(
+          spreadRadius: -2,
+          blurRadius: 10,
+          offset: const Offset(5, 5),
+          color: Colors.black.withOpacity(0.5),
+        )
+      ],
+      color: const Color.fromARGB(255, 186, 208, 228),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Column(
+        children: childList,
+      ),
     ),
   );
 }
@@ -83,30 +130,7 @@ Widget buildGradientContainer(Alignment alignment, List<Color> gradColors) {
   );
 }
 
-Widget buildAuthButton(Function onPressed, bool isLogin) {
-  return ElevatedButton(
-    onPressed: () {
-      onPressed();
-    },
-    style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-    child: Ink(
-      decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: [lightBlue, darkBlue]),
-          borderRadius: BorderRadius.circular(20)),
-      child: Container(
-        width: double.infinity,
-        height: 70,
-        alignment: Alignment.center,
-        child: Text(
-          isLogin ? 'Log In' : 'Sign Up',
-          style: GoogleFonts.pacifico(color: Colors.white, fontSize: 25),
-        ),
-      ),
-    ),
-  );
-}
+
 
 Widget buildUpdateButton(context, onPressed, text, gradientColors) {
   return ElevatedButton(
