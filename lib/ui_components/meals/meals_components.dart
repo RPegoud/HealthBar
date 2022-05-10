@@ -1,5 +1,4 @@
 import 'package:auth/ui_components/meals/barChart.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,22 +54,32 @@ class alimentTile extends StatelessWidget {
                             color: Colors.black,
                           ),
                         ),
-                  subtitle: Text(
-                    'Protein : ${aliment.proteins}g\nCarbs : ${aliment.carbs}g\nFat : ${aliment.fats}g',
-                    style: GoogleFonts.pacifico(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 200,
-              width: 200,
-              child: buildBarChart(),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'Protein : ${aliment.proteins}g\nCarbs : ${aliment.carbs}g\nFat : ${aliment.fats}g',
+                  style: GoogleFonts.pacifico(
+                    color: Colors.black,
+                    fontSize: 17,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                // const Spacer(),
+                SizedBox(
+                  height: 150,
+                  width: 150,
+                  child: buildBarChart(
+                    proteins: aliment.proteins,
+                    carbs: aliment.carbs,
+                    fats: aliment.fats,
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),

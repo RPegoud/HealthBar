@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
+
 class PieChart extends CustomPainter {
   PieChart({required this.categories, required this.width});
 
@@ -59,15 +61,3 @@ class Category {
   final String name;
   final double amount;
 }
-
-// var kCategories = [
-//   Category('Proteins', amount: 27),
-//   Category('Carbs', amount: 47),
-//   Category('Fats', amount: 26)
-// ];
-
-final kColors = [
-  const Color.fromRGBO(82, 98, 255, 1),
-  const Color.fromRGBO(255, 171, 67, 1),
-  const Color.fromRGBO(252, 91, 57, 1),
-];

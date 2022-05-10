@@ -1,8 +1,18 @@
+import 'package:auth/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class buildBarChart extends StatelessWidget {
-  const buildBarChart({Key? key}) : super(key: key);
+  final proteins;
+  final carbs;
+  final fats;
+
+  const buildBarChart(
+      {Key? key,
+      required this.proteins,
+      required this.carbs,
+      required this.fats})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,7 @@ class buildBarChart extends StatelessWidget {
         barGroups: barGroups,
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: 20,
+        maxY: 100,
       ),
     );
   }
@@ -34,7 +44,7 @@ class buildBarChart extends StatelessWidget {
             return BarTooltipItem(
               rod.toY.round().toString(),
               const TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             );
@@ -50,27 +60,27 @@ class buildBarChart extends StatelessWidget {
     );
     String text;
     switch (value.toInt()) {
-      case 0:
-        text = 'Mn';
-        break;
+      // case 0:
+      //   text = 'Cal';
+      //   break;
       case 1:
-        text = 'Te';
+        text = 'Prot';
         break;
       case 2:
-        text = 'Wd';
+        text = 'Carbs';
         break;
       case 3:
-        text = 'Tu';
+        text = 'Fat';
         break;
-      case 4:
-        text = 'Fr';
-        break;
-      case 5:
-        text = 'St';
-        break;
-      case 6:
-        text = 'Sn';
-        break;
+      // case 4:
+      //   text = 'Fr';
+      //   break;
+      // case 5:
+      //   text = 'St';
+      //   break;
+      // case 6:
+      //   text = 'Sn';
+      //   break;
       default:
         text = '';
         break;
@@ -112,22 +122,23 @@ class buildBarChart extends StatelessWidget {
   );
 
   List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
-          x: 0,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
+        // BarChartGroupData(
+        //   x: 0,
+        //   barRods: [
+        //     BarChartRodData(
+        //       toY: 8,
+        //       gradient: _barsGradient,
+        //     )
+        //   ],
+        //   showingTooltipIndicators: [0],
+        // ),
         BarChartGroupData(
           x: 1,
           barRods: [
             BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
+              color: kColors[0],
+              toY: proteins,
+              // gradient: _barsGradient,
             )
           ],
           showingTooltipIndicators: [0],
@@ -136,8 +147,9 @@ class buildBarChart extends StatelessWidget {
           x: 2,
           barRods: [
             BarChartRodData(
-              toY: 14,
-              gradient: _barsGradient,
+              color: kColors[1],
+              toY: carbs,
+              // gradient: _barsGradient,
             )
           ],
           showingTooltipIndicators: [0],
@@ -146,53 +158,56 @@ class buildBarChart extends StatelessWidget {
           x: 3,
           barRods: [
             BarChartRodData(
-              toY: 15,
-              gradient: _barsGradient,
+              color: kColors[2],
+              toY: fats,
+              // gradient: _barsGradient,
             )
           ],
           showingTooltipIndicators: [0],
         ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [
-            BarChartRodData(
-              toY: 13,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
+        // BarChartGroupData(
+        //   x: 3,
+        //   barRods: [
+        //     BarChartRodData(
+        //       toY: 13,
+        //       gradient: _barsGradient,
+        //     )
+        //   ],
+        //   showingTooltipIndicators: [0],
+        // ),
+        // BarChartGroupData(
+        //   x: 3,
+        //   barRods: [
+        //     BarChartRodData(
+        //       toY: 10,
+        //       gradient: _barsGradient,
+        //     )
+        //   ],
+        //   showingTooltipIndicators: [0],
+        // ),
       ];
 }
 
-class BarChartSample3 extends StatefulWidget {
-  const BarChartSample3({Key? key}) : super(key: key);
+// class BarChartSample3 extends StatefulWidget {
+//   const BarChartSample3({
+//     Key? key,
+//   }) : super(key: key);
 
-  @override
-  State<StatefulWidget> createState() => BarChartSample3State();
-}
+//   @override
+//   State<StatefulWidget> createState() => BarChartSample3State();
+// }
 
-class BarChartSample3State extends State<BarChartSample3> {
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.7,
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        color: const Color(0xff2c4260),
-        child: const buildBarChart(),
-      ),
-    );
-  }
-}
+// class BarChartSample3State extends State<BarChartSample3> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return AspectRatio(
+//       aspectRatio: 1.7,
+//       child: Card(
+//         elevation: 0,
+//         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+//         color: const Color(0xff2c4260),
+//         child: buildBarChart(),
+//       ),
+//     );
+//   }
+// }

@@ -49,3 +49,9 @@ const neumorphicBlue =  Color.fromRGBO(193, 214, 233, 1);
     'Extra active (strenuous exercise two or more times per day)'
   ];
   final List activityFactors = [1.2, 1.375, 1.55, 1.725, 1.9];
+
+  final kColors = [
+  const Color.fromRGBO(82, 98, 255, 1),
+  const Color.fromRGBO(255, 171, 67, 1),
+  const Color.fromRGBO(252, 91, 57, 1),
+];
