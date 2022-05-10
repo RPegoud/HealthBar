@@ -24,7 +24,6 @@ class _MealScreenState extends State<MealScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // TODO : push changes
                 Text(
                   'Meals',
                   style: GoogleFonts.pacifico(

@@ -1,3 +1,5 @@
+import 'package:auth/ui_components/meals/barChart.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,34 +36,40 @@ class alimentTile extends StatelessWidget {
           title: Text(
             aliment.name,
             textAlign: TextAlign.center,
-            style: GoogleFonts.pacifico(
-              color: Colors.black,
-              fontSize: 20
-            ),
+            style: GoogleFonts.pacifico(color: Colors.black, fontSize: 20),
           ),
           children: <Widget>[
-            ListTile(
-              title: aliment.unit == true
-                  ? Text(
-                      'Details for one unit:',
-                      style: GoogleFonts.pacifico(
-                        color: Colors.black,
-                      ),
-                    )
-                  : Text(
-                      'Details for 100g:',
-                      style: GoogleFonts.pacifico(
-                        color: Colors.black,
-                      ),
+            Column(
+              children: [
+                ListTile(
+                  title: aliment.unit == true
+                      ? Text(
+                          'Details for one unit:',
+                          style: GoogleFonts.pacifico(
+                            color: Colors.black,
+                          ),
+                        )
+                      : Text(
+                          'Details for 100g:',
+                          style: GoogleFonts.pacifico(
+                            color: Colors.black,
+                          ),
+                        ),
+                  subtitle: Text(
+                    'Protein : ${aliment.proteins}g\nCarbs : ${aliment.carbs}g\nFat : ${aliment.fats}g',
+                    style: GoogleFonts.pacifico(
+                      color: Colors.black,
+                      fontSize: 17,
                     ),
-              subtitle: Text(
-                'Protein : ${aliment.proteins}g\nCarbs : ${aliment.carbs}g\nFat : ${aliment.fats}g',
-                style: GoogleFonts.pacifico(
-                  color: Colors.black,
-                  fontSize: 17,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
+              ],
+            ),
+            const SizedBox(
+              height: 200,
+              width: 200,
+              child: buildBarChart(),
             )
           ],
         ),
