@@ -7,6 +7,7 @@
     </div>
   </div>
 </div>
+
 ## ⏰ Current Status: Proof-of-Concept
 
 This repository hosts the code for the HealthBar web app, a Flutter-based application designed to help users manage their daily macronutrient intake and calculate calorie and macronutrient breakdowns for individual meals. Whether you're on a strict dietary regimen or simply want to make informed food choices, HealthBar has you covered.
