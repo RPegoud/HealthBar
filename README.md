@@ -1,16 +1,18 @@
-# auth
+# HealthBar
 
-A new Flutter project.
+## Current Status: Proof-of-Concept
 
-## Getting Started
+This repository hosts the code for the HealthBar web app, a Flutter-based application designed to help users manage their daily macronutrient intake and calculate calorie and macronutrient breakdowns for individual meals. Whether you're on a strict dietary regimen or simply want to make informed food choices, HealthBar has you covered.
 
-This project is a starting point for a Flutter application.
+## 🌟 Key Features
 
-A few resources to get you started if this is your first Flutter project:
+* 📱 Flutter-Powered User Interface: HealthBar features a sleek and intuitive user interface developed with Flutter, ensuring a smooth and responsive experience across various devices.
+* 🥗 Meal Macronutrient Calculator: Easily input your meal components, and HealthBar will calculate the macronutrient breakdown, helping you easily maintain your dietary goals.
+* 🍽️ Daily Nutrient Tracker: Keep track of your daily macronutrient intake and monitor your progress toward your nutrition goals, promoting a healthier lifestyle.
+* 🔥 Firebase Backend: The backend of HealthBar is powered by Firebase, ensuring secure data storage and seamless synchronization across devices.
+* 📊 Visualize Your Nutrition: Interactive charts enable you to visualize your dietary data, making it easier to analyze your eating habits and make informed decisions.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Take control of your nutrition and make better dietary choices with HealthBar – your go-to tool for tracking and managing your daily macronutrient intake.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Access HealthBar right here](https://nutrition-web-app.web.app/#/)
+
