@@ -1,7 +1,12 @@
 # HealthBar
 
-<center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/Banner.png" width=700></center>
-
+<div align="center">
+  <div style="display: flex; justify-content: center;">
+    <div style="margin-right: 20px;">
+      <center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/Banner.png" width=700></center>
+    </div>
+  </div>
+</div>
 ## ⏰ Current Status: Proof-of-Concept
 
 This repository hosts the code for the HealthBar web app, a Flutter-based application designed to help users manage their daily macronutrient intake and calculate calorie and macronutrient breakdowns for individual meals. Whether you're on a strict dietary regimen or simply want to make informed food choices, HealthBar has you covered.
@@ -20,8 +25,20 @@ Take control of your nutrition and make better dietary choices with HealthBar �
 
 ## 🚀 DashBoard and Daily Macro Calculator
 
-<center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/Dashboard.jpg" width=700></center>
+<div align="center">
+  <div style="display: flex; justify-content: center;">
+    <div style="margin-right: 20px;">
+      <center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/Dashboard.jpg" width=700></center>
+    </div>
+  </div>
+</div>
 
 ## 🥗 Meal Planner
 
-<center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/MealPlanner.jpg" width=700></center>
+<div align="center">
+  <div style="display: flex; justify-content: center;">
+    <div style="margin-right: 20px;">
+      <center><img src="https://raw.githubusercontent.com/RPegoud/HealthBar/master/images/MealPlanner.jpg" width=700></center>
+    </div>
+  </div>
+</div>
